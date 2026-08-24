@@ -14,6 +14,7 @@ html {
   --line-color: #393939;
   --button-color: #242424;
   --blue: #2196f3;
+  --white-color: #ffffff;
 }
 
 @font-face {
@@ -27,6 +28,12 @@ html {
   src: url("../../assets/fonts/Sora/static/Sora-SemiBold.ttf")
     format("truetype");
   font-weight: 600;
+}
+
+@font-face {
+  font-family: "Sora";
+  src: url("../../assets/fonts/Sora/static/Sora-Bold.ttf") format("truetype");
+  font-weight: 900;
 }
 
 html {
@@ -213,12 +220,6 @@ main {
   white-space: nowrap;
 }
 
-.start-prompt p {
-  color: var(--text-color);
-  font-weight: 600;
-  white-space: nowrap;
-}
-
 .buttom-seperation-line {
   position: absolute;
   bottom: 80px;
@@ -296,6 +297,9 @@ main {
   .start-prompt {
     top: 150px;
   }
+  .start-prompt p {
+    color: var(--white-color);
+  }
 }
 html {
   box-sizing: border-box;
@@ -313,13 +317,6 @@ html {
   --text-color: white;
   --button-color: hsl(0, 0%, 15%);
 }
-@font-face {
-  font-family: "Sora";
-  src: url("/assets/fonts/Sora/static/Sora-Regular.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-
 .attribution {
   font-size: 0.6875rem;
   text-align: center;
@@ -481,7 +478,7 @@ section p {
 }
 .title {
   height: 66px;
-  margin-bottom: 42px;
+  margin-bottom: 30px;
 }
 .logo-large {
   width: 267px;
@@ -631,7 +628,8 @@ section p {
 .start-prompt p {
   height: auto;
   margin: 0;
-  color: var(--text-color);
+  color: var(--white-color);
+  opacity: 1;
   font-size: 1rem;
   font-weight: 600;
   white-space: nowrap;
@@ -785,6 +783,9 @@ section p {
   .start-prompt {
     top: 150px;
     width: 100%;
+  }
+  .start-prompt p {
+    color: var(--white-color);
   }
   .restart-btn {
     top: 580px;
