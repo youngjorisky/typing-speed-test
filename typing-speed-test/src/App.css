@@ -14,33 +14,29 @@ html {
   --line-color: #393939;
   --button-color: #242424;
   --blue: #2196f3;
-  --white-color: #ffffff;
 }
 
 @font-face {
   font-family: "Sora";
-  src: url("../../assets/fonts/Sora/static/Sora-Regular.ttf") format("truetype");
+  src: url("./assets/fonts/Sora/Sora-Regular.ttf") format("truetype");
   font-weight: 400;
+  font-style: normal;
 }
 
 @font-face {
   font-family: "Sora";
-  src: url("../../assets/fonts/Sora/static/Sora-SemiBold.ttf")
-    format("truetype");
+  src: url("./assets/fonts/Sora/Sora-SemiBold.ttf") format("truetype");
   font-weight: 600;
+  font-style: normal;
 }
 
 @font-face {
   font-family: "Sora";
-  src: url("../../assets/fonts/Sora/static/Sora-Bold.ttf") format("truetype");
-  font-weight: 900;
+  src: url("./assets/fonts/Sora/Sora-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
 }
 
-html {
-  height: auto;
-  min-height: 100%;
-  overflow-y: auto;
-}
 body {
   min-height: 100vh;
   height: auto;
@@ -336,6 +332,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0px 50px;
 }
 .typing-speed-container {
   width: 100%;
@@ -410,7 +407,7 @@ button {
 }
 .stat-value {
   color: white;
-  font-weight: 900;
+  font-weight: 700;
 }
 section {
   position: relative;
@@ -490,6 +487,7 @@ section p {
 }
 .title-right strong {
   color: var(--text-color);
+  font-weight: 400;
 }
 .design {
   position: relative;
@@ -539,6 +537,7 @@ section p {
   align-items: center;
   gap: 5px;
   margin-left: 12px;
+  font-size: 0.75rem;
 }
 .control-group > span {
   color: var(--muted-color);
@@ -609,7 +608,7 @@ section p {
 }
 .start-prompt {
   position: absolute;
-  top: 150px;
+  top: 250px;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
