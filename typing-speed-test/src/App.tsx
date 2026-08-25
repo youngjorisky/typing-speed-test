@@ -102,7 +102,7 @@ function App() {
   }
 
   return (
-    <div className="typing-speed-container">
+    <div className={`typing-speed-container typing-speed-${screen}`}>
       <Header personalBest={personalBest} />
       <section className={`design design-${screen}`}>
         {screen === "idle" && (
@@ -340,12 +340,17 @@ function Results({
 }) {
   return (
     <section className="results">
-      <img
-        className="result-icon"
-        src={personalBest ? newPersonalBestIcon : completedIcon}
-        alt=""
-        aria-hidden="true"
-      />
+      <div className="most-outer-layer">
+        <div className="outer-layer">
+          <img
+            className="result-icon"
+            src={personalBest ? newPersonalBestIcon : completedIcon}
+            alt=""
+            aria-hidden="true"
+          />
+        </div>
+      </div>
+
       <h1>{title}</h1>
       <p>{subtitle}</p>
       <div className="result-cards">
