@@ -6,6 +6,8 @@ import trophyFullImage from "./assets/trophy-solid-full.svg";
 import restartIcon from "./assets/icon-restart.svg";
 import completedIcon from "./assets/icon-completed.svg";
 import newPersonalBestIcon from "./assets/icon-new-pb.svg";
+import starPattern1 from "./assets/pattern-star-1.svg";
+import starPattern2 from "./assets/pattern-star-2.svg";
 
 type Difficulty = "easy" | "medium" | "hard";
 type Mode = "timed" | "passage";
@@ -149,29 +151,32 @@ function App() {
         {(screen === "results" ||
           screen === "first-test" ||
           screen === "new-personal-best") && (
-          <Results
-            title={
-              screen === "first-test"
-                ? "Baseline Established!"
-                : screen === "new-personal-best"
-                  ? "High Score Smashed!"
-                  : "Test Complete!"
-            }
-            subtitle={
-              screen === "first-test"
-                ? "You've set the bar. Now the real challenge begins—time to beat it."
-                : screen === "new-personal-best"
-                  ? "You're getting faster. That was incredible typing."
-                  : "Solid run. Keep pushing to beat your high score."
-            }
-            action={screen === "results" ? "Go Again" : "Beat This Score"}
-            personalBest={screen === "new-personal-best"}
-            wpm={wpm}
-            accuracy={accuracy}
-            correct={correct}
-            incorrect={incorrect}
-            onRestart={restartTest}
-          />
+          <>
+            <Results
+              title={
+                screen === "first-test"
+                  ? "Baseline Established!"
+                  : screen === "new-personal-best"
+                    ? "High Score Smashed!"
+                    : "Test Complete!"
+              }
+              subtitle={
+                screen === "first-test"
+                  ? "You've set the bar. Now the real challenge begins—time to beat it."
+                  : screen === "new-personal-best"
+                    ? "You're getting faster. That was incredible typing."
+                    : "Solid run. Keep pushing to beat your high score."
+              }
+              action={screen === "results" ? "Go Again" : "Beat This Score"}
+              personalBest={screen === "new-personal-best"}
+              wpm={wpm}
+              accuracy={accuracy}
+              correct={correct}
+              incorrect={incorrect}
+              onRestart={restartTest}
+            />
+            <Animations />
+          </>
         )}
       </section>
     </div>
@@ -316,7 +321,24 @@ function Restart({ label, onClick }: { label: string; onClick: () => void }) {
     </button>
   );
 }
-
+function Animations() {
+  return (
+    <div>
+      <img
+        src={starPattern1}
+        alt="star-pattern-1"
+        aria-hidden="true"
+        className="star-pattern-1"
+      />
+      <img
+        src={starPattern2}
+        alt="star-pattern"
+        aria-hidden="true"
+        className="star-pattern-2"
+      />
+    </div>
+  );
+}
 function Results({
   title,
   subtitle,
