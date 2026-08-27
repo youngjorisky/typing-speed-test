@@ -636,7 +636,7 @@ section p {
 }
 .restart-btn {
   position: absolute;
-  top: 635px;
+  top: 615px;
   left: 50%;
   transform: translateX(-50%);
   height: 56px;
@@ -747,6 +747,7 @@ section p {
   height: 30px;
   z-index: 0;
   pointer-events: none;
+  animation: star-shine 5s ease-in-out infinite;
 }
 
 .star-pattern-1 {
@@ -757,7 +758,45 @@ section p {
   height: 50px;
   z-index: 0;
   pointer-events: none;
+  animation: star-shine 2.4s ease-in-out 1.2s infinite;
 }
+.confetti-pattern {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+  animation: confetti-burst 900ms ease-out both;
+}
+
+@keyframes star-shine {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(0.85);
+    filter: drop-shadow(0 0 0 transparent);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 7px rgba(255, 255, 255, 0.8));
+  }
+}
+
+@keyframes confetti-burst {
+  0% {
+    opacity: 0;
+    transform: translateY(-24px) scale(0.88);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 .results .restart-btn img {
   filter: brightness(0);
 }
@@ -807,6 +846,7 @@ section p {
   }
   .control-group {
     width: 50%;
+    flex-wrap: wrap;
     margin: 0;
   }
   .control-group > span {
@@ -816,9 +856,6 @@ section p {
     flex: 1;
     overflow: hidden;
     white-space: nowrap;
-  }
-  .control-group button:not(.selected) {
-    display: none;
   }
   .control-group + .control-group {
     border: 0;
@@ -842,7 +879,7 @@ section p {
     color: var(--white-color);
   }
   .restart-btn {
-    top: 580px;
+    top: 560px;
   }
   .results {
     min-height: 680px;
@@ -855,6 +892,10 @@ section p {
   .results > p {
     max-width: 320px;
     font-size: 0.95rem;
+  }
+  .confetti-pattern {
+    bottom: 0;
+    width: 100%;
   }
   .result-cards {
     width: 100%;

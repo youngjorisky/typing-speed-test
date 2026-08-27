@@ -6,6 +6,7 @@ import trophyFullImage from "./assets/trophy-solid-full.svg";
 import restartIcon from "./assets/icon-restart.svg";
 import completedIcon from "./assets/icon-completed.svg";
 import newPersonalBestIcon from "./assets/icon-new-pb.svg";
+import confettiPattern from "./assets/pattern-confetti.svg";
 import starPattern1 from "./assets/pattern-star-1.svg";
 import starPattern2 from "./assets/pattern-star-2.svg";
 
@@ -103,6 +104,13 @@ function App() {
     setTyped(event.target.value.slice(0, passage.length));
   }
 
+  function handleDifficultyChange(value: Difficulty) {
+    setDifficulty(value);
+    if (!started && !result) {
+      setPassage(randomPassage(value));
+    }
+  }
+
   return (
     <div className={`typing-speed-container typing-speed-${screen}`}>
       <Header personalBest={personalBest} />
@@ -113,7 +121,7 @@ function App() {
             <Controls
               difficulty={difficulty}
               mode={mode}
-              setDifficulty={setDifficulty}
+              setDifficulty={handleDifficultyChange}
               setMode={setMode}
             />
             <Passage text={passage} />
@@ -137,7 +145,7 @@ function App() {
             <Controls
               difficulty={difficulty}
               mode={mode}
-              setDifficulty={setDifficulty}
+              setDifficulty={handleDifficultyChange}
               setMode={setMode}
             />
             <TypingPassage
@@ -175,7 +183,7 @@ function App() {
               incorrect={incorrect}
               onRestart={restartTest}
             />
-            <Animations />
+            <Animations showConfetti={screen === "new-personal-best"} />
           </>
         )}
       </section>
@@ -321,21 +329,33 @@ function Restart({ label, onClick }: { label: string; onClick: () => void }) {
     </button>
   );
 }
-function Animations() {
+function Animations({ showConfetti }: { showConfetti: boolean }) {
   return (
     <div>
-      <img
-        src={starPattern1}
-        alt="star-pattern-1"
-        aria-hidden="true"
-        className="star-pattern-1"
-      />
-      <img
-        src={starPattern2}
-        alt="star-pattern"
-        aria-hidden="true"
-        className="star-pattern-2"
-      />
+      {!showConfetti && (
+        <>
+          <img
+            src={starPattern1}
+            alt="star-pattern-1"
+            aria-hidden="true"
+            className="star-pattern-1"
+          />
+          <img
+            src={starPattern2}
+            alt="star-pattern"
+            aria-hidden="true"
+            className="star-pattern-2"
+          />
+        </>
+      )}
+      {showConfetti && (
+        <img
+          src={confettiPattern}
+          alt=""
+          aria-hidden="true"
+          className="confetti-pattern"
+        />
+      )}
     </div>
   );
 }
