@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import "./App.css";
-import passages from "../../data.json";
+import passages from "../data.json";
 import logoLarge from "./assets/logo-large.svg";
 import trophyFullImage from "./assets/trophy-solid-full.svg";
 import restartIcon from "./assets/icon-restart.svg";
