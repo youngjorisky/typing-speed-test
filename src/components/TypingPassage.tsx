@@ -1,3 +1,5 @@
+import { useEffect, useRef } from "react";
+
 export function TypingPassage({
   text,
   typed,
@@ -7,8 +9,28 @@ export function TypingPassage({
   typed: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }) {
+  const passageRef = useRef<HTMLLabelElement>(null);
+
+  useEffect(() => {
+    const cursor = passageRef.current?.querySelector<HTMLElement>(".cursor");
+    if (!cursor) return;
+
+    const { top, bottom } = cursor.getBoundingClientRect();
+    const topMargin = 96;
+    const bottomMargin = 128;
+
+    if (top < topMargin) {
+      window.scrollBy({ top: top - topMargin, behavior: "smooth" });
+    } else if (bottom > window.innerHeight - bottomMargin) {
+      window.scrollBy({
+        top: bottom - (window.innerHeight - bottomMargin),
+        behavior: "smooth",
+      });
+    }
+  }, [typed]);
+
   return (
-    <label className="typing-passage">
+    <label ref={passageRef} className="typing-passage">
       <input
         autoFocus
         value={typed}

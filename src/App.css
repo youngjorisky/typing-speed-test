@@ -850,7 +850,7 @@ section p {
 
   .star-pattern-1 {
     bottom: -40px;
-    right: -50px;
+    right: 0px;
   }
 }
 
@@ -878,4 +878,28 @@ body {
   width: 100vw;
   max-width: none;
   padding: 20px 130px;
+}
+
+@media (max-width: 500px) {
+  .typing-speed-results,
+  .typing-speed-first-test,
+  .typing-speed-new-personal-best {
+    width: 100%;
+    padding: 20px 16px;
+  }
+  .typing-speed-results .title,
+  .typing-speed-first-test .title,
+  .typing-speed-new-personal-best .title {
+    margin-bottom: 20px;
+  }
+  .typing-speed-results .title-right,
+  .typing-speed-first-test .title-right,
+  .typing-speed-new-personal-best .title-right {
+    gap: 6px;
+  }
+  .typing-speed-results .title-right span,
+  .typing-speed-first-test .title-right span,
+  .typing-speed-new-personal-best .title-right span {
+    white-space: nowrap;
+  }
 }
