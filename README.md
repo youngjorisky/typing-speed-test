@@ -8,6 +8,10 @@ A responsive typing speed test built with React, TypeScript, and Vite. Choose a 
 
 [View the live site](https://typing-speed-test-lime-nine.vercel.app/)
 
+## Challenge
+
+This project is based on the [Frontend Mentor Typing Speed Test challenge](https://www.frontendmentor.io/challenges/typing-speed-test).
+
 ## Features
 
 - Timed mode with a 60-second countdown
@@ -69,6 +73,19 @@ React Router maps each test state to a route:
 - `/new-personal-best` when a new high score is achieved
 
 The visual components are separated into focused files for the header, statistics, controls, passages, typing input, results, animations, and restart action. Component-specific styles are kept alongside the relevant components where practical.
+
+### Source Structure
+
+```text
+src/
+├── components/       # Reusable interface components and component styles
+├── context/          # Shared typing-test state and custom hook
+├── pages/            # Route-level test-state views
+├── assets/            # Logos, icons, fonts, and decorative graphics
+├── App.tsx            # Router and application shell
+├── App.css            # Shared layout and visual styles
+└── types.ts           # Shared TypeScript union types
+```
 
 ## What I Learned
 

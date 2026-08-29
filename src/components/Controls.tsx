@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import "./Controls.css";
 import type { Difficulty, Mode } from "../types";
 
@@ -77,15 +77,41 @@ function MobileDropdown({
   onChange: (value: string) => void;
 }) {
   const [open, setOpen] = useState(false);
+  const dropdownId = useId();
+  const dropdownRef = useRef<HTMLDivElement>(null);
   const selectedOption = options.find((option) => option.value === value);
+
+  useEffect(() => {
+    function closeDropdown(event: MouseEvent) {
+      if (!dropdownRef.current?.contains(event.target as Node)) setOpen(false);
+    }
+
+    document.addEventListener("mousedown", closeDropdown);
+    return () => document.removeEventListener("mousedown", closeDropdown);
+  }, []);
+
+  function handleTriggerKeyDown(event: React.KeyboardEvent<HTMLButtonElement>) {
+    if (event.key === "Escape") setOpen(false);
+    if (
+      event.key === "ArrowDown" ||
+      event.key === "Enter" ||
+      event.key === " "
+    ) {
+      event.preventDefault();
+      setOpen(true);
+    }
+  }
+
   return (
-    <div className="mobile-control-select">
+    <div ref={dropdownRef} className="mobile-control-select">
       <button
         type="button"
         className="mobile-control-trigger"
         aria-label={label}
         aria-expanded={open}
         aria-haspopup="true"
+        aria-controls={dropdownId}
+        onKeyDown={handleTriggerKeyDown}
         onClick={() => setOpen((isOpen) => !isOpen)}
       >
         {selectedOption?.label}
@@ -94,6 +120,7 @@ function MobileDropdown({
       {open && (
         <div
           className="mobile-control-options"
+          id={dropdownId}
           role="radiogroup"
           aria-label={label}
         >
