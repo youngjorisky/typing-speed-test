@@ -377,6 +377,9 @@ function TypingPassage({
         value={typed}
         onChange={onChange}
         aria-label="Type the passage"
+        autoCapitalize="off"
+        autoCorrect="off"
+        spellCheck={false}
       />
       <span>
         {text.split("").map((character, index) => (
